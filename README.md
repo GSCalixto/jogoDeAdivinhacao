@@ -1,2 +1,2 @@
-# jogoDeAdivinhacao
-Jogo de adivinhação feito em Python
+# jogos
+Jogos feitos em Python para estudo
