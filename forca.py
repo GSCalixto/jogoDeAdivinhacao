@@ -1,10 +1,11 @@
 import random
 
-def jogar():
-    print("*********************************")
-    print("***Bem vindo ao jogo da Forca!***")
-    print("*********************************")
+def exibeMensagemInicio():
+        print("*********************************")
+        print("***Bem vindo ao jogo da Forca!***")
+        print("*********************************")
 
+def carregaPalavraSecreta():
     arquivo = open("palavras.txt", "r")
 
     palavras = []
@@ -14,11 +15,18 @@ def jogar():
         palavras.append(linha)
 
     arquivo.close()
-
+    
     numero = random.randrange(0, len(palavras))
     palavraSecreta = palavras[numero]
-    
-    letrasAcertadas = ["_" for letra in palavraSecreta]
+    return palavraSecreta
+
+def iniciaLetrasAcertadas(palavra):
+    return ["_" for letra in palavra]
+
+def jogar():
+    exibeMensagemInicio()
+    palavraSecreta = carregaPalavraSecreta()
+    letrasAcertadas = iniciaLetrasAcertadas(palavraSecreta)
 
     enforcou = False
     acertou = False
@@ -47,7 +55,6 @@ def jogar():
     else:
         print("Você perdeu!!")
     print("Fim do jogo")
-
 
 if(__name__ == "__main__"):
     jogar()
