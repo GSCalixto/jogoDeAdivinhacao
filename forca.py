@@ -1,5 +1,36 @@
 import random
 
+def jogar():
+    exibeMensagemInicio()
+    palavraSecreta = carregaPalavraSecreta()
+    
+    letrasAcertadas = iniciaLetrasAcertadas(palavraSecreta)
+    print(letrasAcertadas)
+
+    enforcou = False
+    acertou = False
+    erros = 0
+
+    while(not enforcou and not acertou):
+
+        chute = pedeChute()
+
+        if(chute in palavraSecreta):
+            marcaChuteCorreto(chute, palavraSecreta, letrasAcertadas)
+        else:
+            erros += 1
+            desenhaForca(erros)
+
+        enforcou = erros == 7
+        acertou = "_" not in letrasAcertadas
+        print(letrasAcertadas)
+
+    if(acertou):
+        imprimeMensagemVencedor()
+
+    else:
+        imprimeMensagemPerdedor(palavraSecreta)
+
 def exibeMensagemInicio():
         print("*********************************")
         print("***Bem vindo ao jogo da Forca!***")
@@ -116,38 +147,7 @@ def desenhaForca(erros):
 
     print(" |            ")
     print("_|___         ")
-    print()
-
-def jogar():
-    exibeMensagemInicio()
-    palavraSecreta = carregaPalavraSecreta()
-    
-    letrasAcertadas = iniciaLetrasAcertadas(palavraSecreta)
-    print(letrasAcertadas)
-
-    enforcou = False
-    acertou = False
-    erros = 0
-
-    while(not enforcou and not acertou):
-
-        chute = pedeChute()
-
-        if(chute in palavraSecreta):
-            marcaChuteCorreto(chute, palavraSecreta, letrasAcertadas)
-        else:
-            erros += 1
-            desenhaForca(erros)
-
-        enforcou = erros == 7
-        acertou = "_" not in letrasAcertadas
-        print(letrasAcertadas)
-
-    if(acertou):
-        imprimeMensagemVencedor()
-
-    else:
-        imprimeMensagemPerdedor(palavraSecreta)  
+    print() 
 
 if(__name__ == "__main__"):
     jogar()
