@@ -36,8 +36,8 @@ def exibeMensagemInicio():
         print("***Bem vindo ao jogo da Forca!***")
         print("*********************************")
 
-def carregaPalavraSecreta():
-    arquivo = open("palavras.txt", "r")
+def carregaPalavraSecreta(nomeArquivo="palavras.txt"):
+    arquivo = open(nomeArquivo, "r")
 
     palavras = []
 
