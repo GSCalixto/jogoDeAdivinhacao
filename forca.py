@@ -23,10 +23,30 @@ def carregaPalavraSecreta():
 def iniciaLetrasAcertadas(palavra):
     return ["_" for letra in palavra]
 
+def pedeChute():
+    chute = input("Tente uma letra")
+    chute = chute.strip().upper()
+    return chute
+
+def marcaChuteCorreto(chute, palavraSecreta, letrasAcertadas):
+    index = 0
+    for letra in palavraSecreta:
+        if(chute == letra):
+            letrasAcertadas[index] = letra
+        index += 1
+
+def imprimeMensagemVencedor():
+    print("Parabens! Você ganhou!!")
+
+def imprimeMensagemPerdedor():
+    print("Você perdeu...")
+
 def jogar():
     exibeMensagemInicio()
     palavraSecreta = carregaPalavraSecreta()
+    
     letrasAcertadas = iniciaLetrasAcertadas(palavraSecreta)
+    print(letrasAcertadas)
 
     enforcou = False
     acertou = False
@@ -34,15 +54,10 @@ def jogar():
 
     while(not enforcou and not acertou):
 
-        chute = input("Tente uma letra")
-        chute = chute.strip().upper()
+        chute = pedeChute()
 
         if(chute in palavraSecreta):
-            index = 0
-            for letra in palavraSecreta:
-                if(chute == letra):
-                    letrasAcertadas[index] = letra
-                index += 1
+            marcaChuteCorreto(chute, palavraSecreta, letrasAcertadas)
         else:
             erros += 1
 
@@ -51,10 +66,10 @@ def jogar():
         print(letrasAcertadas)
 
     if(acertou):
-        print("Você ganhou!!")
+        imprimeMensagemVencedor()
+
     else:
-        print("Você perdeu!!")
-    print("Fim do jogo")
+        imprimeMensagemPerdedor()  
 
 if(__name__ == "__main__"):
     jogar()
