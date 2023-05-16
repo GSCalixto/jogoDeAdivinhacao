@@ -99,6 +99,7 @@ def imprimeMensagemPerdedor(palavraSecreta):
     print("     \_         _/         ")
     print("       \_______/           ")
     print("\nFAZ O LLLLLLLLLLLLLLLLLLLLL")
+    
 def desenhaForca(erros):
     print("  _______     ")
     print(" |/      |    ")
